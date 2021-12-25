@@ -2,6 +2,7 @@ import numpy as np
 
 def prepareBoard():
     initBoard()
+    displayBoard()
 
 def initBoard():
     board = []
@@ -13,5 +14,12 @@ def initBoard():
         newLine = []
 
     return board
+
+def displayBoard():
+    table = initBoard()
+    for i in range(10):
+        for j in range(10):
+            print(table[i][j], end=" ")
+        print()
 
 prepareBoard()
