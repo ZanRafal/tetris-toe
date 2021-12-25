@@ -1,7 +1,8 @@
-import numpy as np
+import random as rand
 
 def prepareBoard():
     initBoard()
+    lockRandomFields()
     displayBoard()
 
 def initBoard():
@@ -28,4 +29,13 @@ def displayBoard():
         print("|---|--------------------------------------|")
     print("|==========================================|")
 
-prepareBoard()
+def lockRandomFields(quantity):
+    board = []
+    newLine = []
+    for i in range(0, quantity):
+        for j in range(2):
+            newLine.append(rand.randint(0, 8))
+        board.append(newLine)
+        print(newLine)
+        newLine = []
+    return board
