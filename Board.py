@@ -7,8 +7,8 @@ def prepareBoard():
 def initBoard():
     board = []
     newLine = []
-    for i in range(0, 10):
-        for j in range(0, 10):
+    for i in range(0, 8):
+        for j in range(0, 8):
             newLine.append("X")
         board.append(newLine)
         newLine = []
@@ -17,9 +17,15 @@ def initBoard():
 
 def displayBoard():
     table = initBoard()
-    for i in range(10):
-        for j in range(10):
-            print(table[i][j], end=" ")
+    print("|==========================================|")
+    print("| X | 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 |")
+    print("|---|======================================|")
+    for i in range(8):
+        print('| {} '.format(i + 1), end="")
+        for j in range(8):
+            print('| {} |'.format(table[i][j]), end="")
         print()
+        print("|---|--------------------------------------|")
+    print("|==========================================|")
 
 prepareBoard()
