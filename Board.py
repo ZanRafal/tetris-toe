@@ -5,20 +5,6 @@ def prepareBoard():
     board = initBoard()
     displayBoard(board)
 
-def initBoard():
-    board = []
-    newLine = []
-
-    for i in range(0, 8):
-        for j in range(0, 8):
-            newLine.append("X")
-        board.append(newLine)
-        newLine = []
-
-    #TODO: Zmienna quantity jako parametr
-    board = lockTiles(8, board)
-    return board
-
 def displayBoard(table = []):
     print("|==========================================|")
     print("| X | 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 |")
@@ -36,15 +22,18 @@ def displayBoard(table = []):
         print("|---|--------------------------------------|")
     print("|==========================================|")
 
-def pickRandomFields(quantity):
+def initBoard():
     board = []
     newLine = []
-    for i in range(0, quantity):
-        for j in range(2):
-            newLine.append(rand.randint(0, 7))
+
+    for i in range(0, 8):
+        for j in range(0, 8):
+            newLine.append("X")
         board.append(newLine)
         newLine = []
 
+    #TODO: Zmienna quantity jako parametr
+    board = lockTiles(8, board)
     return board
 
 def lockTiles(quantity, myBoard = []):
@@ -56,5 +45,17 @@ def lockTiles(quantity, myBoard = []):
         myBoard[x][y] = "Θ"
 
     return myBoard
+
+
+def pickRandomFields(quantity):
+    board = []
+    newLine = []
+    for i in range(0, quantity):
+        for j in range(2):
+            newLine.append(rand.randint(0, 7))
+        board.append(newLine)
+        newLine = []
+
+    return board
 
 prepareBoard()
