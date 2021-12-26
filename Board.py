@@ -26,7 +26,7 @@ def displayBoard(table = []):
     for i in range(8):
         print('| {} '.format(i + 1), end="")
         for j in range(8):
-            if table[i][j] == "W":
+            if table[i][j] == "Θ":
                 print("| " + colored(table[i][j], "red") + " |", end="")
             elif table[i][j] == "O":
                 print("| " + colored(table[i][j], "green") + " |", end="")
@@ -53,7 +53,7 @@ def lockTiles(quantity, myBoard = []):
     for i in range(len(randomFields)):
         y = randomFields[i][0]
         x = randomFields[i][1]
-        myBoard[x][y] = "W"
+        myBoard[x][y] = "Θ"
 
     return myBoard
 
