@@ -1,5 +1,6 @@
 import random as rand
 from termcolor import colored
+import numpy as np
 
 def prepareBoard():
     board = initBoard()
@@ -58,4 +59,10 @@ def pickRandomFields(quantity):
 
     return board
 
-prepareBoard()
+def numberOfOs(board=[]):
+    counter = 0
+    for i in range(len(board)):
+        for j in range(len(board)):
+            if board[i][j] == "X":
+                counter = counter + 1
+    return counter
