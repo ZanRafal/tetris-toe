@@ -2,9 +2,9 @@ import random as rand
 from termcolor import colored
 import numpy as np
 
-def prepareBoard():
-    board = initBoard()
-    displayBoard(board)
+# def prepareBoard():
+#     board = initBoard()
+#     displayBoard(board)
 
 def displayBoard(table = []):
     print("|==========================================|")
@@ -46,7 +46,6 @@ def lockTiles(quantity, myBoard = []):
         myBoard[x][y] = "Θ"
 
     return myBoard
-
 
 def pickRandomFields(quantity):
     board = []
