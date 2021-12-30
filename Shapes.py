@@ -1,22 +1,24 @@
 import random as rnd
 
 
-def set1(x, y, tile=[]):
+def chooseFromSet(x, y, tile=[]):
     choice = rnd.randint(0, 4)
-    match choice:
-        case '0':
+    if choice == 0:
             large_rectangle_shape(x, y, tile)
-        case '1':
+    elif choice == 1:
             small_rectangle_shape(x, y, tile)
-        case '2':
+    elif choice == 2:
             small_square_shape(x, y, tile)
-        case '3':
+    elif choice == 3:
             large_rectangle_shape(x, y, tile)
-        case '4':
+    elif choice == 4:
             diamond_shape(x, y, tile)
 
 
 def toggle(x, y, tile=[]):
+    if x < 0 | x > 8: return
+    if y < 0 | y > 8: return
+
     if tile[x][y] == "X":
         tile[x][y] = "O"
     elif tile[x][y] == "O":
