@@ -1,21 +1,17 @@
 import random as rand
 from termcolor import colored
+import os
+import Shapes as sh
 
 
-# def prepareBoard():
-#     board = initBoard()
-#     displayBoard(board)
-
-
-def displayBoard(table=None):
-    if table is None:
-        table = []
+def displayBoard(table):
+    os.system('clear')
     print("|==========================================|")
     print("| X | 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 |")
     print("|---|======================================|")
-    for i in range(8):
-        print('| {} '.format(i + 1), end="")
-        for j in range(8):
+    for j in range(8):
+        print('| {} '.format(j + 1), end="")
+        for i in range(8):
             if table[i][j] == "Θ":
                 print("| " + colored(table[i][j], "red") + " |", end="")
             elif table[i][j] == "O":
@@ -38,18 +34,15 @@ def initBoard():
         new_line = []
 
     # TODO: Zmienna quantity jako parametr
-    board = lockTiles(8, board)
+    board = lock_tiles(8, board)
     return board
 
 
-def lockTiles(quantity, my_board=None):
-    if my_board is None:
-        my_board = []
+def lock_tiles(quantity, my_board):
     random_fields = pick_random_fields(quantity)
-
     for i in range(len(random_fields)):
-        y = random_fields[i][0]
-        x = random_fields[i][1]
+        x = random_fields[i][0]
+        y = random_fields[i][1]
         my_board[x][y] = "Θ"
 
     return my_board
@@ -67,9 +60,7 @@ def pick_random_fields(quantity):
     return board
 
 
-def numberOfOs(board=None):
-    if board is None:
-        board = []
+def numberOfOs(board):
     counter = 0
     for i in range(len(board)):
         for j in range(len(board)):
