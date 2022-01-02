@@ -1,3 +1,10 @@
+import random
+
+
+def get_shape():
+    return random.randint(0 , 4)
+
+
 def choose_from_set(x, y, choice, tile):
     if choice == 0:
         large_rectangle_shape(x, y, tile)
