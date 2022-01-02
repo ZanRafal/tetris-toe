@@ -7,7 +7,7 @@ from modules.getChar import *
 
 
 def main():
-    game_board = Board.initBoard()
+    game_board = Board.init_board(8)
     play(game_board)
 
 
@@ -15,7 +15,7 @@ def play(my_board):
     moves_count = 0
     row = col = 4
     new_figure = Shapes.get_shape()
-    Board.displayBoard(my_board.copy())
+    Board.display_board(my_board.copy())
     while True:
         ch = get_nonblock_char(0.5)
         if ch != '':
@@ -26,7 +26,7 @@ def play(my_board):
                 new_figure = Shapes.get_shape()
                 row = col = 4
             Shapes.choose_from_set(row, col, new_figure, my_board)
-            Board.displayBoard(my_board)
+            Board.display_board(my_board)
             Shapes.choose_from_set(row, col, new_figure, my_board)
             display_current_moves_count(moves_count)
 

@@ -4,7 +4,7 @@ import os
 import Shapes as sh
 
 
-def displayBoard(table):
+def display_board(table):
     os.system('clear')
     print("|==========================================|")
     print("| X | 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 |")
@@ -23,7 +23,7 @@ def displayBoard(table):
     print("|==========================================|")
 
 
-def initBoard():
+def init_board(quantity):
     board = []
     new_line = []
 
@@ -34,7 +34,7 @@ def initBoard():
         new_line = []
 
     # TODO: Zmienna quantity jako parametr
-    board = lock_tiles(8, board)
+    board = lock_tiles(quantity, board)
     return board
 
 
@@ -60,7 +60,7 @@ def pick_random_fields(quantity):
     return board
 
 
-def numberOfOs(board):
+def number_of_os(board):
     counter = 0
     for i in range(len(board)):
         for j in range(len(board)):
