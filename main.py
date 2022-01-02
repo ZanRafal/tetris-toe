@@ -1,8 +1,6 @@
 # Rafał Zan
 # 311 214
 
-import random as rnd
-
 import Board
 import Shapes
 from modules.getChar import *
@@ -16,7 +14,7 @@ def main():
 def play(my_board):
     moves_count = 0
     row = col = 4
-    new_figure = rnd.randint(0, 4)
+    new_figure = Shapes.get_shape()
     Board.displayBoard(my_board.copy())
     while True:
         ch = get_nonblock_char(0.5)
@@ -25,7 +23,7 @@ def play(my_board):
             if ch == '\n':
                 moves_count += 1
                 Shapes.choose_from_set(row, col, new_figure, my_board)
-                new_figure = rnd.randint(0, 4)
+                new_figure = Shapes.get_shape()
                 row = col = 4
             Shapes.choose_from_set(row, col, new_figure, my_board)
             Board.displayBoard(my_board)
