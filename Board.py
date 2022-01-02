@@ -1,12 +1,15 @@
 import random as rand
 from termcolor import colored
-import numpy as np
+
 
 # def prepareBoard():
 #     board = initBoard()
 #     displayBoard(board)
 
-def displayBoard(table = []):
+
+def displayBoard(table=None):
+    if table is None:
+        table = []
     print("|==========================================|")
     print("| X | 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 |")
     print("|---|======================================|")
@@ -23,45 +26,53 @@ def displayBoard(table = []):
         print("|---|--------------------------------------|")
     print("|==========================================|")
 
+
 def initBoard():
     board = []
-    newLine = []
+    new_line = []
 
     for i in range(0, 8):
         for j in range(0, 8):
-            newLine.append("X")
-        board.append(newLine)
-        newLine = []
+            new_line.append("X")
+        board.append(new_line)
+        new_line = []
 
-    #TODO: Zmienna quantity jako parametr
+    # TODO: Zmienna quantity jako parametr
     board = lockTiles(8, board)
     return board
 
-def lockTiles(quantity, myBoard = []):
-    randomFields = pickRandomFields(quantity)
 
-    for i in range(len(randomFields)):
-        y = randomFields[i][0]
-        x = randomFields[i][1]
-        myBoard[x][y] = "Θ"
+def lockTiles(quantity, my_board=None):
+    if my_board is None:
+        my_board = []
+    random_fields = pick_random_fields(quantity)
 
-    return myBoard
+    for i in range(len(random_fields)):
+        y = random_fields[i][0]
+        x = random_fields[i][1]
+        my_board[x][y] = "Θ"
 
-def pickRandomFields(quantity):
+    return my_board
+
+
+def pick_random_fields(quantity):
     board = []
-    newLine = []
+    new_line = []
     for i in range(0, quantity):
         for j in range(2):
-            newLine.append(rand.randint(0, 7))
-        board.append(newLine)
-        newLine = []
+            new_line.append(rand.randint(0, 7))
+        board.append(new_line)
+        new_line = []
 
     return board
 
-def numberOfOs(board=[]):
+
+def numberOfOs(board=None):
+    if board is None:
+        board = []
     counter = 0
     for i in range(len(board)):
         for j in range(len(board)):
             if board[i][j] == "X":
-                counter = counter + 1
+                counter += 1
     return counter

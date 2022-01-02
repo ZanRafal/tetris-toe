@@ -1,3 +1,3 @@
-from . import get_char
+from . import getChar
 
-get_char.configure_stdin()
+getChar.configure_stdin()
