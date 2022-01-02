@@ -1,7 +1,13 @@
 import random as rand
 from termcolor import colored
 import os
-import Shapes as sh
+import Shapes
+
+
+def update_display(row, col, new_figure, my_board):
+    Shapes.choose_from_set(row, col, new_figure, my_board)
+    display_board(my_board)
+    Shapes.choose_from_set(row, col, new_figure, my_board)
 
 
 def display_board(table):

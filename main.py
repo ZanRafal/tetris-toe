@@ -25,9 +25,7 @@ def play(my_board):
                 Shapes.choose_from_set(row, col, new_figure, my_board)
                 new_figure = Shapes.get_shape()
                 row = col = 4
-            Shapes.choose_from_set(row, col, new_figure, my_board)
-            Board.display_board(my_board)
-            Shapes.choose_from_set(row, col, new_figure, my_board)
+            Board.update_display(row, col, new_figure, my_board)
             display_current_moves_count(moves_count)
 
 
