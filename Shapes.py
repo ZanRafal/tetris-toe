@@ -1,44 +1,44 @@
 import random
 
 
-def get_shape():
-    return random.randint(1, 5)
+def get_shape(multiplier):
+    return random.randint(1, 5 * multiplier)
 
 
-def choose_game_mode(x, y, choice, tile, diffculty):
-    if diffculty == 1:
-        choose_from_easy_set(x, y, choice, tile)
-    elif diffculty == 2:
-        choose_from_easy_set(x, y, choice, tile)
-    elif diffculty == 3:
-        choose_from_hard_set(x, y, choice, tile)
+# def choose_game_mode(x, y, choice, tile, diffculty):
+#     if diffculty == 1:
+#         choose_from_easy_set(x, y, choice, tile)
+#     elif diffculty == 2:
+#         choose_from_easy_set(x, y, choice, tile)
+#     elif diffculty == 3:
+#         choose_from_hard_set(x, y, choice, tile)
 
-def choose_from_hard_set(x, y, choice, tile):
-    if choice == 1:
-        diamond_shape(x, y, tile)
-    elif choice == 2:
-        cornerless_square(x, y, tile)
-    elif choice == 3:
-        h_shape(x, y, tile)
-    elif choice == 4:
-        left_diagonal_shape(x, y, tile)
-    elif choice == 5:
-        right_diagonal_shape(x, y, tile)
+# def choose_from_hard_set(x, y, choice, tile):
+#     if choice == 1:
+#         diamond_shape(x, y, tile)
+#     elif choice == 2:
+#         cornerless_square(x, y, tile)
+#     elif choice == 3:
+#         h_shape(x, y, tile)
+#     elif choice == 4:
+#         left_diagonal_shape(x, y, tile)
+#     elif choice == 5:
+#         right_diagonal_shape(x, y, tile)
 
-def choose_from_medium_set(x, y, choice, tile):
-    if choice == 1:
-        large_horizontal_rectangle_shape(x, y, tile)
-    elif choice == 2:
-        large_vertical_rectangle_shape(x, y, tile)
-    elif choice == 3:
-        small_square_shape(x, y, tile)
-    elif choice == 4:
-        large_square_shape(x, y, tile)
-    elif choice == 5:
-        t_shape(x, y, tile)
+# def choose_from_medium_set(x, y, choice, tile):
+#     if choice == 1:
+#         large_horizontal_rectangle_shape(x, y, tile)
+#     elif choice == 2:
+#         large_vertical_rectangle_shape(x, y, tile)
+#     elif choice == 3:
+#         small_square_shape(x, y, tile)
+#     elif choice == 4:
+#         large_square_shape(x, y, tile)
+#     elif choice == 5:
+#         t_shape(x, y, tile)
 
 
-def choose_from_easy_set(x, y, choice, tile):
+def choose_from_set(x, y, choice, tile):
     if choice == 1:
         small_vertical_rectangle_shape(x, y, tile)
     elif choice == 2:
@@ -49,6 +49,26 @@ def choose_from_easy_set(x, y, choice, tile):
         two_one_brick_shape(x, y, tile)
     elif choice == 5:
         one_two_brick_shape(x, y, tile)
+    elif choice == 6:
+        large_horizontal_rectangle_shape(x, y, tile)
+    elif choice == 7:
+        large_vertical_rectangle_shape(x, y, tile)
+    elif choice == 8:
+        small_square_shape(x, y, tile)
+    elif choice == 9:
+        large_square_shape(x, y, tile)
+    elif choice == 10:
+        t_shape(x, y, tile)
+    elif choice == 11:
+        diamond_shape(x, y, tile)
+    elif choice == 12:
+        cornerless_square(x, y, tile)
+    elif choice == 13:
+        h_shape(x, y, tile)
+    elif choice == 14:
+        left_diagonal_shape(x, y, tile)
+    elif choice == 15:
+        right_diagonal_shape(x, y, tile)
 
 
 def toggle(x, y, tile):
