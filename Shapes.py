@@ -154,16 +154,28 @@ def large_square_shape(x, y, tile):
     toggle(x - 1, y + 1, tile)  # lower left
 
 
+"""
+O O O 
+X O X 
+X C X 
+"""
+def t_shape(x, y, tile):
+    toggle(x, y, tile)          # lower center
+    toggle(x, y, tile)          # center
+    toggle(x, y - 1, tile)      # upper center
+    toggle(x - 1, y - 1, tile)  # upper left
+    toggle(x + 1, y - 1, tile)  # upper right
+
+
+
 ##Hard Set
 ###################################################################################
 
 
 """
-X X X X X
-X X O X X
-X O C O X
-X X O X X
-X X X X X 
+X O X 
+O C O 
+X O X 
 """
 
 def diamond_shape(x, y, tile):
@@ -175,11 +187,10 @@ def diamond_shape(x, y, tile):
 
 
 """
-X X X X X
-X O X O X
-X X C X X
-X O X O X
-X X X X X 
+
+O X O 
+X C X 
+O X O 
 """
 
 def cornerless_square(x, y, tile):
