@@ -50,5 +50,9 @@ def display_current_moves_count(moves_count):
     print("Aktualna liczba ruchów: {}".format(moves_count))
 
 
+def display_win_message():
+    print("Gratulacje!! Udało Ci się ukończyć grę!")
+
+
 if __name__ == "__main__":
     main()
