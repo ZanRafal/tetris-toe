@@ -183,15 +183,50 @@ X X X X X
 """
 
 def cornerless_square(x, y, tile):
-    pass
+    toggle(x, y, tile)          # center
+    toggle(x - 1, y - 1, tile)  # upper left
+    toggle(x + 1, y - 1, tile)  # upper right
+    toggle(x - 1, y + 1, tile)  # lower left
+    toggle(x + 1, y + 1, tile)  # lower right
 
 
 """
-
- O O O 0
- X X X 
- O O O 
-   
+X X X X X 
+X O X O X
+X O C O X
+X O X O X
+X X X X X
 """
 
-def
+def h_shape(x, y, tile):
+    toggle(x, y, tile)          # center
+    toggle(x - 1, y, tile)      # left
+    toggle(x + 1, y, tile)      # right
+    toggle(x - 1, y - 1, tile)  # upper left
+    toggle(x - 1, y + 1, tile)  # lower left
+    toggle(x + 1, y - 1, tile)  # upper right
+    toggle(x + 1, y + 1, tile)  # lower right
+
+
+""" 
+O X X
+X C X 
+X X O 
+"""
+
+def left_diagonal_shape(x, y, tile):
+    toggle(x, y, tile)          # center
+    toggle(x - 1, y - 1, tile)  # upper left
+    toggle(x + 1, y + 1, tile)  # lower right
+
+
+"""
+X X O
+X C X
+O X X
+"""
+
+def right_diagonal_shape(x, y, tile):
+    toggle(x, y, tile)          # center
+    toggle(x - 1, y + 1, tile)  # lower left
+    toggle(x + 1, y - 1, tile)  # upper right
