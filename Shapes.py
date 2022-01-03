@@ -5,6 +5,19 @@ def get_shape():
     return random.randint(1, 5)
 
 
+def choose_from_medium_set(x, y, choice, tile):
+    if choice == 1:
+        large_horizontal_rectangle_shape(x, y, tile)
+    elif choice == 2:
+        large_vertical_rectangle_shape(x, y, tile)
+    elif choice == 3:
+        small_square_shape(x, y, tile)
+    elif choice == 4:
+        large_square_shape(x, y, tile)
+    elif choice == 5:
+        t_shape(x, y, tile)
+
+
 def choose_from_easy_set(x, y, choice, tile):
     if choice == 1:
         small_vertical_rectangle_shape(x, y, tile)
