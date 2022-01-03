@@ -1,16 +1,11 @@
 # Rafał Zan
 # 311 214
-import _thread
-import time
 import os
-from queue import Queue
-import threading
+import time
 
 import Board
 import Shapes
 from modules.getChar import *
-from Timer import Timer
-
 
 
 def main():
@@ -18,7 +13,7 @@ def main():
     # global size
     # global difficulty_level
 
-    game_board = Board.init_board(8)
+    game_board = Board.init_board(8, 8)
     play(game_board)
     # menu()
 
