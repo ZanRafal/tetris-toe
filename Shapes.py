@@ -7,15 +7,15 @@ def get_shape():
 
 def choose_from_easy_set(x, y, choice, tile):
     if choice == 1:
-        large_rectangle_shape(x, y, tile)
+        small_vertical_rectangle_shape(x, y, tile)
     elif choice == 2:
         small_horizontal_rectangle_shape(x, y, tile)
     elif choice == 3:
-        small_square_shape(x, y, tile)
+        center_only_shape(x, y, tile)
     elif choice == 4:
-        large_rectangle_shape(x, y, tile)
+        two_one_brick_shape(x, y, tile)
     elif choice == 5:
-        small_vertical_rectangle_shape(x, y, tile)
+        one_two_brick_shape(x, y, tile)
 
 
 def toggle(x, y, tile):
