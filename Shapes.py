@@ -5,6 +5,14 @@ def get_shape():
     return random.randint(1, 5)
 
 
+def choose_game_mode(x, y, choice, tile, diffculty):
+    if diffculty == 1:
+        choose_from_easy_set(x, y, choice, tile)
+    elif diffculty == 2:
+        choose_from_easy_set(x, y, choice, tile)
+    elif diffculty == 3:
+        choose_from_hard_set(x, y, choice, tile)
+
 def choose_from_hard_set(x, y, choice, tile):
     if choice == 1:
         diamond_shape(x, y, tile)
