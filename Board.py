@@ -4,6 +4,10 @@ import os
 import Shapes
 
 
+def test_board():
+    board = init_board(8)
+    display_board(board)
+
 def update_display(row, col, new_figure, my_board):
     Shapes.choose_from_set(row, col, new_figure, my_board)
     display_board(my_board)
@@ -29,6 +33,41 @@ def display_board(table):
     print("|==========================================|")
 
 
+def display_board2(table):
+    buffer = '|=='
+    for i in range(len(table)):
+        buffer += '====='
+    buffer += '|\n'
+
+    buffer += '| X '
+    for i in range(len(table)):
+        buffer += '| ' + str(i + 1) + ' |'
+
+    buffer += '\n|---|'
+    for i in range(len(table)):
+        buffer += '----'
+    buffer += '------|\n'
+
+    for j in range(8):
+        buffer += '| {} '.format(j + 1)
+        for i in range(8):
+            if table[i][j] == "Θ":
+                buffer += "| " + colored(table[i][j], "red") + " |"
+            elif table[i][j] == "O":
+                buffer += "| " + colored(table[i][j], "green") + " |"
+            else:
+                buffer += "| " + table[i][j] + " |"
+        buffer += '\n|---|'
+        for i in range(len(table)):
+            buffer += '----'
+        buffer += '------|\n'
+
+    buffer += '|=='
+    for i in range(len(table)):
+        buffer += '====='
+    buffer += '|'
+    print(buffer)
+
 def init_board(quantity):
     board = []
     new_line = []
@@ -39,7 +78,6 @@ def init_board(quantity):
         board.append(new_line)
         new_line = []
 
-    # TODO: Zmienna quantity jako parametr
     board = lock_tiles(quantity, board)
     return board
 
@@ -73,3 +111,5 @@ def number_of_x(board):
             if board[i][j] == "X":
                 counter += 1
     return counter
+
+test_board()
