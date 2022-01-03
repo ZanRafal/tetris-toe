@@ -66,7 +66,7 @@ def pick_random_fields(quantity):
     return board
 
 
-def number_of_os(board):
+def number_of_x(board):
     counter = 0
     for i in range(len(board)):
         for j in range(len(board)):
