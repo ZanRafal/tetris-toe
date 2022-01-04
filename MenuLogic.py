@@ -3,6 +3,7 @@ import os
 import Dictionaries
 import LeaderboardsLogic as leads
 
+
 difficulty_level = 2
 
 
@@ -35,7 +36,6 @@ def show_game_settings():
         print("Podano nieprawidłową wartość:")
 
 
-
 def get_difficulty_level():
     return difficulty_level
 
@@ -56,7 +56,7 @@ def menu():
     elif val == '2':
         os.system('clear')
         print("leaderboards")
-        leads.show_leaderboards()
+        show_leaderboards()
     elif val == '3':
         os.system('clear')
         print("settings")
@@ -67,3 +67,14 @@ def menu():
         exit(0)
     else:
         print("Podano nieprawidłową wartość:")
+
+def show_leaderboards():
+    os.system('clear')
+    print("Tablice wyników")
+    print(leads.read_from_file())
+    exit =  input()
+    print("[1]Wyjście")
+    if exit == '1':
+        menu()
+
+menu()
