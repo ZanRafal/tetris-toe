@@ -1,6 +1,7 @@
 ###Logika menu
 import os
 import Dictionaries
+import LeaderboardsLogic as leads
 
 difficulty_level = 2
 
@@ -55,7 +56,7 @@ def menu():
     elif val == '2':
         os.system('clear')
         print("leaderboards")
-        show_leaderboards()
+        leads.show_leaderboards()
     elif val == '3':
         os.system('clear')
         print("settings")
