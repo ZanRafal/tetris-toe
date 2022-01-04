@@ -2,17 +2,13 @@
 # 311 214
 import os
 import time
-
+import TimerLogic as tl
 import Board
 import Shapes
 from modules.getChar import *
 
 
 def main():
-    # global blocked_fields
-    # global size
-    # global difficulty_level
-
     game_board = Board.init_board(8, 8)
     play(game_board)
     # menu()
@@ -38,6 +34,7 @@ def play(my_board):
         Board.update_display(row, col, new_figure, my_board)
         display_current_moves_count(moves_count)
         display_time(int(timer2 - timer))
+        tl.display_score(int(timer2 - timer), moves_count)
     display_win_message()
 
 
@@ -66,37 +63,38 @@ def display_time(value):
     seconds = value % 60
     minutes = value // 60
     if seconds <= 9:
-        print('{} : 0{}'.format(minutes, seconds))
+        print('Czas rozgrywki: {} : 0{}'.format(minutes, seconds))
     else:
         print('{} : {}'.format(minutes, seconds))
 
 
-def menu():
-    os.system('clear')
-    print("Select game options:")
-    print('[1]Play game \n'
-          '[2]Leaderboards \n'
-          '[3]Settings \n'
-          '[4]Exit \n'
-          )
-    val = input()
-    if val == 1:
-        #play()
-        pass
-    elif val == 2:
-        print("leaderboards")
-        #show_leaderboards()
-    elif val == 3:
-        print("settings")
-        #show_game_settings()
-    elif val == 4:
-        exit(0)
-    else:
-        print("Podano nieprawidłową wartość:")
-        menu()
-
-def show_game_settings():
-    pass
+# def menu():
+#     os.system('clear')
+#     print("Select game options:")
+#     print('[1]Play game \n'
+#           '[2]Leaderboards \n'
+#           '[3]Settings \n'
+#           '[4]Exit \n'
+#           )
+#     val = input()
+#     if val == 1:
+#         #play()
+#         print("Play")
+#         pass
+#     elif val == 2:
+#         print("leaderboards")
+#         #show_leaderboards()
+#     elif val == 3:
+#         print("settings")
+#         #show_game_settings()
+#     elif val == 4:
+#         exit(0)
+#     else:
+#         print("Podano nieprawidłową wartość:")
+#         menu()
+#
+# def show_game_settings():
+#     pass
 
 
 if __name__ == "__main__":
