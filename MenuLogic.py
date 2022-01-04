@@ -55,7 +55,7 @@ def menu():
     elif val == '2':
         os.system('clear')
         print("leaderboards")
-        #show_leaderboards()
+        show_leaderboards()
     elif val == '3':
         os.system('clear')
         print("settings")
