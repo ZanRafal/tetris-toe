@@ -2,7 +2,7 @@
 # 311 214
 import os
 import time
-
+from termcolor import colored
 import MenuLogic
 import TimerLogic as tl
 import Board
@@ -81,6 +81,13 @@ def init_last_step(moves_count, timer):
     display_credits()
 
 
+def display_credits():
+    print('\n\n\n\n \t\t\t\t\t\t\t\t Game created by {}'
+          .format(colored('Rafał Zan', 'yellow', attrs=['bold'])))
+    print(' \t\t\t\t\t\t\t\t Student of {}'
+          .format(colored('Warsaw University of Technology', 'yellow', attrs=['bold'])))
+    print(' \t\t\t\t\t\t\t\t Thank you for playing {}'
+          .format(colored('<3', 'red', attrs=['bold'])))
 
 
 if __name__ == "__main__":
