@@ -73,5 +73,15 @@ def display_time(value):
         print('{} : {}'.format(minutes, seconds))
 
 
+def init_last_step(moves_count, timer):
+    display_win_message()
+    tl.display_final_time_and_moves(moves_count, timer)
+    final_score = tl.calculate_score(timer, moves_count)
+    tl.display_final_score(moves_count, final_score)
+    display_credits()
+
+
+
+
 if __name__ == "__main__":
     main()
