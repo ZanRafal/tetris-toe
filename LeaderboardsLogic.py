@@ -1,4 +1,4 @@
-##Leaderboards
+#Leaderboards
 import os
 
 
@@ -18,10 +18,10 @@ def is_on_podium(player_score, file_name):
 
 def validate_score(player_name, game_time, number_of_moves, player_score, file_name):
     buffer = player_name + " " + str(number_of_moves) + " " + str(game_time) + " " + str(player_score)
-    list = read_from_file(file_name)
+    contestants = read_from_file(file_name)
 
     separated_list = []
-    for element in list:
+    for element in contestants:
         separated_list.append(element.split())
 
     score = []
@@ -30,11 +30,11 @@ def validate_score(player_name, game_time, number_of_moves, player_score, file_n
 
     for i in range(len(score)):
         if score[i] < int(player_score):
-            list.insert(i, buffer)
+            contestants.insert(i, buffer)
             break
     else:
-        list.append(buffer)
-    save_to_file(list)
+        contestants.append(buffer)
+    save_to_file(contestants, file_name)
 
 
 def save_to_file(list_of_items, file_name):
@@ -47,8 +47,8 @@ def save_to_file(list_of_items, file_name):
     file.close()
 
 
-def capacity_not_exceeded(list):
-    return True if len(list) < 6 else False
+def capacity_not_exceeded(number_of_contestants):
+    return True if len(number_of_contestants) < 6 else False
 
 
 def read_from_file(file_name):
@@ -100,11 +100,11 @@ def read_from_file(file_name):
 #     print(buffer)
 
 
-def display_leaderboards():
+def display_leaderboards(file_name):
     field_names = ('Name', "Time", "Moves", "Score")
-    contestants = read_from_file()
+    contestants = read_from_file(file_name)
     os.system('clear')
-    buffer =  ' X   '
+    buffer = ' X   '
     for el in field_names:
         buffer += el + '       '
     buffer += '\n----'
@@ -117,9 +117,9 @@ def display_leaderboards():
         buffer += ' ' + str(i) + '   '
         i += 1
         for element in line.split():
-            # if '.' in element: buffer += '\t'
             buffer += element + '\t'
-            if ':' in element: buffer += '\t'
+            if ':' in element:
+                buffer += '\t'
 
         buffer += '\n'
 
