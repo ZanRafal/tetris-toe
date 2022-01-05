@@ -57,48 +57,70 @@ def read_from_file():
     return lines
 
 
+# def display_leaderboards():
+#     field_names = ('Name', "Time", "Moves", "Score")
+#
+#     contestants = read_from_file()
+#     os.system('clear')
+#
+#     buffer = '┏━━━'
+#     for i in range(len(field_names)):
+#         buffer += '┳━━━━━━━━━━━━'
+#     buffer += '┓\n'
+#
+#     buffer += '┃' + ' ╳ ' + '┃'
+#
+#     for i in field_names:
+#         buffer += '    ' + str(i) + '    ┃'
+#
+#     buffer += '\n┣━━━┫'
+#     for i in range(len(field_names)):
+#         buffer += '━━━━━━━━━━━┫'
+#     buffer += '\n'
+#
+#     i = 0
+#     for line in contestants:
+#         buffer += '┃ ' + str(i + 1) + ' ┃'
+#         i += 1
+#         for element in line.split():
+#             if len(element) > 3:
+#                 buffer += '\t' + str(element) + '\t┃'
+#             else:
+#                 buffer += '\t' + str(element) + '\t\t┃'
+#         if i < len(contestants):
+#             buffer += '\n┣━━━'
+#             for _ in range(len(contestants) - 1):
+#                 buffer += '╋━━━━━━━━━━━'
+#             buffer += '┫'
+#             buffer += '\n'
+#     buffer += '\n┗━━━'
+#     for _ in range(len(field_names)):
+#         buffer += '┻━━━━━━━━━━━'
+#     buffer += '┛\n'
+#     print(buffer)
+
+
 def display_leaderboards():
-    field_names = ('Imię', "Time", "Moves", "Score")
-
+    field_names = ('Name', "Time", "Moves", "Score")
     contestants = read_from_file()
-    os.system('clear')
-
-    buffer = '┏━━━'
+    # os.system('clear')
+    buffer =  ' X   '
+    for el in field_names:
+        buffer += el + '       '
+    buffer += '\n----'
     for i in range(len(field_names)):
-        buffer += '┳━━━━━━━━━━━'
-    buffer += '┓\n'
-
-    buffer += '┃' + ' ╳ ' + '┃'
-
-    for i in field_names:
-        buffer += '\t' + str(i) + '\t┃'
-
-    buffer += '\n┣━━━┫'
-    for i in range(len(field_names)):
-        buffer += '━━━━━━━━━━━┫'
+        buffer += '-----------'
     buffer += '\n'
 
     i = 0
     for line in contestants:
-        buffer += '┃ ' + str(i + 1) + ' \t┃'
+        buffer += ' ' + str(i + 1) + '   '
         i += 1
         for element in line.split():
-            if len(element) > 3:
-                buffer += '\t' + str(element) + '\t┃'
-            else:
-                buffer += '\t' + str(element) + '\t\t┃'
-        if i < len(contestants):
-            buffer += '\n┣━━━'
-            for _ in range(len(contestants) - 1):
-                buffer += '╋━━━━━━━━━━━'
-            buffer += '┫'
-            buffer += '\n'
-    buffer += '\n┗━━━'
-    for _ in range(len(field_names)):
-        buffer += '┻━━━━━━━━━━━'
-    buffer += '┛\n'
+            if '.' in element: buffer += '\t'
+            buffer += element + '   \t'
+            if ':' in element: buffer += '\t'
+
+        buffer += '\n'
+
     print(buffer)
-
-
-if __name__ == "__main__":
-   print( is_on_podium(520))
