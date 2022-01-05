@@ -1,8 +1,8 @@
 import random
 
 
-def get_shape(multiplier):
-    return random.randint(1, 5 * multiplier)
+def get_shape(difficulty_level):
+    return random.randint(1, 5 * difficulty_level)
 
 
 # def choose_game_mode(x, y, choice, tile, diffculty):
