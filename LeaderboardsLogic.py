@@ -2,9 +2,9 @@
 import os
 
 
-def is_on_podium(player_score):
+def is_on_podium(player_score, file_name):
     separated_list = []
-    for element in read_from_file():
+    for element in read_from_file(file_name):
         separated_list.append(element.split())
 
     score = []
@@ -16,9 +16,9 @@ def is_on_podium(player_score):
     return True
 
 
-def validate_score(player_name, game_time, number_of_moves, player_score):
+def validate_score(player_name, game_time, number_of_moves, player_score, file_name):
     buffer = player_name + " " + str(number_of_moves) + " " + str(game_time) + " " + str(player_score)
-    list = read_from_file()
+    list = read_from_file(file_name)
 
     separated_list = []
     for element in list:
@@ -37,8 +37,8 @@ def validate_score(player_name, game_time, number_of_moves, player_score):
     save_to_file(list)
 
 
-def save_to_file(list_of_items):
-    file = open("leaderboards_db.txt", "w")
+def save_to_file(list_of_items, file_name):
+    file = open(file_name, "w")
     if capacity_not_exceeded(list_of_items):
         file.write('\n'.join(list_of_items))
     else:
@@ -51,8 +51,8 @@ def capacity_not_exceeded(list):
     return True if len(list) < 6 else False
 
 
-def read_from_file():
-    with open("leaderboards_db.txt", "r") as file:
+def read_from_file(file_name):
+    with open(file_name, "r") as file:
         lines = file.read().splitlines()
     return lines
 
@@ -103,22 +103,22 @@ def read_from_file():
 def display_leaderboards():
     field_names = ('Name', "Time", "Moves", "Score")
     contestants = read_from_file()
-    # os.system('clear')
+    os.system('clear')
     buffer =  ' X   '
     for el in field_names:
         buffer += el + '       '
     buffer += '\n----'
     for i in range(len(field_names)):
-        buffer += '-----------'
+        buffer += '----------'
     buffer += '\n'
 
-    i = 0
+    i = 1
     for line in contestants:
-        buffer += ' ' + str(i + 1) + '   '
+        buffer += ' ' + str(i) + '   '
         i += 1
         for element in line.split():
-            if '.' in element: buffer += '\t'
-            buffer += element + '   \t'
+            # if '.' in element: buffer += '\t'
+            buffer += element + '\t'
             if ':' in element: buffer += '\t'
 
         buffer += '\n'
