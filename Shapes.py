@@ -1,5 +1,5 @@
 import random
-
+import MenuLogic as menu
 
 def get_shape(difficulty_level):
     return random.randint(1, 5 * difficulty_level)
@@ -72,8 +72,10 @@ def choose_from_set(x, y, choice, tile):
 
 
 def toggle(x, y, tile):
-    if x < 0 or x > 7: return
-    if y < 0 or y > 7: return
+    tmp = 7 + (menu.get_difficulty_level() - 1) * 4
+
+    if x < 0 or x > tmp: return
+    if y < 0 or y > tmp: return
 
     if tile[x][y] == "X":
         tile[x][y] = "O"
