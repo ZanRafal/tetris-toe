@@ -2,6 +2,20 @@
 import os
 
 
+def is_on_podium(player_score):
+    separated_list = []
+    for element in read_from_file():
+        separated_list.append(element.split())
+
+    score = []
+    for element in separated_list:
+        score.append(float(element[3]))
+
+    if player_score < score[2]:
+        return False
+    return True
+
+
 def validate_score(player_name, game_time, number_of_moves, player_score):
     buffer = player_name + " " + str(number_of_moves) + " " + str(game_time) + " " + str(player_score)
     list = read_from_file()
@@ -66,7 +80,7 @@ def display_leaderboards():
 
     i = 0
     for line in contestants:
-        buffer += '┃ ' + str(i + 1) + '\t┃'
+        buffer += '┃ ' + str(i + 1) + ' \t┃'
         i += 1
         for element in line.split():
             if len(element) > 3:
@@ -87,4 +101,4 @@ def display_leaderboards():
 
 
 if __name__ == "__main__":
-    display_leaderboards()
+   print( is_on_podium(520))
