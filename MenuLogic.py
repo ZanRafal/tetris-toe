@@ -68,13 +68,43 @@ def menu():
     else:
         print("Podano nieprawidłową wartość:")
 
+
 def show_leaderboards():
     os.system('clear')
-    print("Tablice wyników")
-    print(leads.read_from_file())
-    exit =  input()
-    print("[1]Wyjście")
-    if exit == '1':
-        menu()
+    print("Tablice wyników: ")
+
+    print('[1]Łatwy \n'
+          '[2]Średni \n'
+          '[3]Trudny \n'
+          '[4]Wyjście z gry \n'
+          )
+
+    val = input()
+    if val == '1':
+        os.system('clear')
+        leads.display_leaderboards()
+        fak_go_bak()
+    elif val == '2':
+        os.system('clear')
+        print("leaderboards")
+        leads.display_leaderboards()
+        fak_go_bak()
+    elif val == '3':
+        os.system('clear')
+        leads.display_leaderboards()
+        fak_go_bak()
+    elif val == '4':
+        os.system('clear')
+        show_leaderboards()
+    else:
+        print("Podano nieprawidłową wartość")
+
+
+def fak_go_bak():
+    print("[1] Exit")
+    val = input()
+    if val == '1':
+        os.system('clear')
+        show_leaderboards()
 
 menu()
