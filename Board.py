@@ -67,7 +67,9 @@ def display_board(table):
     print(buffer)
 
 
-def init_board(quantity, size):
+def init_board(difficulty_level):
+    size = 8 + (difficulty_level - 1) * 4
+    quantity = 2 ^ difficulty_level
     board = []
     new_line = []
 
