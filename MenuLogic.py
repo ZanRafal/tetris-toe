@@ -2,7 +2,7 @@
 import os
 import Dictionaries
 import LeaderboardsLogic as leads
-
+from termcolor import colored as color
 
 difficulty_level = 2
 
@@ -46,7 +46,8 @@ def menu():
     print('[1]Graj \n'
           '[2]Tablice wyników \n'
           '[3]Ustawienia \n'
-          '[4]Wyjście z gry \n'
+          '[4]Sterowanie \n'
+          '[5]Wyjście z gry \n'
           )
     val = input()
     if val == '1':
@@ -62,6 +63,10 @@ def menu():
         print("settings")
         show_game_settings()
     elif val == '4':
+        os.system('clear')
+        print("Sterowani")
+        display_controls_view()
+    elif val == '5':
         os.system('clear')
         print("Do zobaczenia następnym razem :D ")
         exit(0)
@@ -100,6 +105,23 @@ def show_leaderboards():
         print("Podano nieprawidłową wartość")
 
 
+def display_controls_view():
+    print("Sterowanie:")
+    print('Do poruszania się po planszy gry należy używać przysków: {}, {}, {}, {}'
+          .format(color('W', 'red',attrs=['bold']),
+                  color('S', 'red',attrs=['bold']),
+                  color('A', 'red',attrs=['bold']),
+                  color('D', 'red',attrs=['bold'])
+                  ))
+    print('Aby potwierdzić wybór należy nacisnąć przycik: {}'
+          .format(color('Enter', 'green',attrs=['bold'])
+                  ))
+    print('Rozgrywkę można opuścić w każdym momencie naciskając przycisk: {} \n\n'
+          .format(color('E', 'yellow',attrs=['bold'])
+                  ))
+    fak_go_bak()
+
+
 def fak_go_bak():
     print("[1] Exit")
     val = input()
@@ -107,4 +129,5 @@ def fak_go_bak():
         os.system('clear')
         show_leaderboards()
 
-menu()
+
+display_controls_view()
