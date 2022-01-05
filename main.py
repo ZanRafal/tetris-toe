@@ -2,44 +2,45 @@
 # 311 214
 import os
 import time
+
+import MenuLogic
 import TimerLogic as tl
 import Board
 import Shapes
 from modules.getChar import *
-import MenuLogic as ml
+import MenuLogic as gameMenu
+
 
 def main():
-    print(ml.get_difficulty_level())
+    gameMenu.menu()
 
 
-
-    # game_board = Board.init_board(8, 8)
-    # play(game_board)
-    # menu()
-
-
-def play(my_board):
-    timer = time.time()
+def play():
+    my_board = Board.init_board(gameMenu.get_difficulty_level())
+    start = time.time()
     moves_count = 0
     row = col = 4
-    new_figure = Shapes.get_shape(1)
+    new_figure = Shapes.get_shape(gameMenu.get_difficulty_level())
     Board.display_board(my_board.copy())
     while Board.number_of_x(my_board) != 0:
         ch = get_nonblock_char(0.5)
         time.sleep(0.01)
-        timer2 = time.time()
         if ch != '':
             row, col = change_position(ch, row, col)
             if ch == '\n':
                 moves_count += 1
                 Shapes.choose_from_set(row, col, new_figure, my_board)
-                new_figure = Shapes.get_shape(1)
+                new_figure = Shapes.get_shape(gameMenu.get_difficulty_level())
                 row = col = 4
-        Board.update_display(row, col, new_figure, my_board)
-        display_current_moves_count(moves_count)
-        display_time(int(timer2 - timer))
-        tl.display_score(int(timer2 - timer), moves_count)
-    display_win_message()
+        display_on_game(time.time() - start, new_figure, row, col, my_board, moves_count)
+    init_last_step(moves_count, time.time() - start)
+
+
+def display_on_game(timer, new_figure, row, col, my_board, moves_count):
+    Board.update_display(row, col, new_figure, my_board)
+    display_current_moves_count(moves_count)
+    display_time(int(timer))
+    tl.display_score(int(timer), moves_count)
 
 
 def change_position(var, row, col):
@@ -70,6 +71,7 @@ def display_time(value):
         print('Czas rozgrywki: {} : 0{}'.format(minutes, seconds))
     else:
         print('{} : {}'.format(minutes, seconds))
+
 
 if __name__ == "__main__":
     main()
