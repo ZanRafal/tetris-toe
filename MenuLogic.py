@@ -32,10 +32,10 @@ def show_game_settings():
         difficulty_level = 3
         show_game_settings()
     elif difficulty == '4':
-        # os.system('clear')
+        os.system('clear')
         menu()
     else:
-        print("Podano nieprawidłową wartość:")
+        print(Dictionaries.INVALID_VALUE)
 
 
 def get_difficulty_level():
@@ -59,22 +59,19 @@ def menu():
         main.play()
     elif val == '2':
         os.system('clear')
-        print("Leaderboards:")
         show_leaderboards()
     elif val == '3':
         os.system('clear')
-        print("Settings:")
         show_game_settings()
     elif val == '4':
         os.system('clear')
-        print("Sterowanie:")
         display_controls_view()
     elif val == '5':
         os.system('clear')
-        print("Do zobaczenia następnym razem :D ")
+        print(Dictionaries.EXIT_MESSAGE)
         exit(0)
     else:
-        print("Podano nieprawidłową wartość:")
+        print(Dictionaries.INVALID_VALUE)
 
 
 def show_leaderboards():
@@ -105,7 +102,7 @@ def show_leaderboards():
         os.system('clear')
         menu()
     else:
-        print("Podano nieprawidłową wartość")
+        print(Dictionaries.INVALID_VALUE)
 
 
 def display_controls_view():
