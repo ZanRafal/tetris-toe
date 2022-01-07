@@ -8,8 +8,7 @@ import main
 
 
 def show_game_settings():
-    global difficulty_level
-    difficulty_level = 2
+    difficulty_level = get_difficulty_level()
     os.system('clear')
     print("Wybierz poziom trudności gry:")
     print('[1] Łatwy \n'
@@ -19,16 +18,16 @@ def show_game_settings():
           )
 
     print("Wybrany poziom trudności: " + Dictionaries.Difficulty.get(difficulty_level) + '\n')
-
     difficulty = get_char()
+
     if difficulty == '1':
-        difficulty_level = 1
+        set_difficulty_level(str(1))
         show_game_settings()
     elif difficulty == '2':
-        difficulty_level = 2
+        set_difficulty_level(str(2))
         show_game_settings()
     elif difficulty == '3':
-        difficulty_level = 3
+        set_difficulty_level(str(3))
         show_game_settings()
     elif difficulty == '4':
         os.system('clear')
@@ -38,7 +37,6 @@ def show_game_settings():
 
 
 def menu():
-    global difficulty_level
     os.system('clear')
     print("Main menu:")
     print('[1] Graj \n'
@@ -155,12 +153,12 @@ def input_name():
             return player_name
 
 
-def get_application_properties():
+def get_difficulty_level():
     with open(Dictionaries.app_properties, "r") as file:
-        properties = file.read()
-    return properties
+        properties = file.readline()
+        return int(properties)
 
 
-def set_application_properties(value):
+def set_difficulty_level(value):
     with open(Dictionaries.app_properties, "w") as file:
         file.write(value)
