@@ -1,4 +1,3 @@
-###Logika menu
 from termcolor import colored as color
 
 import Dictionaries
@@ -6,11 +5,11 @@ import LeaderboardsLogic as leads
 from modules.getChar import *
 import os
 import main
-difficulty_level = 2
 
 
 def show_game_settings():
     global difficulty_level
+    difficulty_level = 2
     os.system('clear')
     print("Wybierz poziom trudności gry:")
     print('[1] Łatwy \n'
@@ -38,11 +37,8 @@ def show_game_settings():
         print(Dictionaries.INVALID_VALUE)
 
 
-def get_difficulty_level():
-    return difficulty_level
-
-
 def menu():
+    global difficulty_level
     os.system('clear')
     print("Main menu:")
     print('[1] Graj \n'
@@ -56,7 +52,8 @@ def menu():
 
     if val == '1':
         os.system('clear')
-        main.play()
+        player_name = input_name()
+        main.play(player_name)
     elif val == '2':
         os.system('clear')
         show_leaderboards()
@@ -87,16 +84,16 @@ def show_leaderboards():
     val = get_char()
     if val == '1':
         os.system('clear')
-        leads.display_leaderboards('difficulty/easy_leaderboards_db.txt')
+        leads.display_leaderboards(Dictionaries.easy_db)
         fak_go_bak()
     elif val == '2':
         os.system('clear')
         print("leaderboards")
-        leads.display_leaderboards('difficulty/medium_leaderboards_db.txt')
+        leads.display_leaderboards(Dictionaries.medium_db)
         fak_go_bak()
     elif val == '3':
         os.system('clear')
-        leads.display_leaderboards('difficulty/hard_leaderboards_db.txt')
+        leads.display_leaderboards(Dictionaries.hard_db)
         fak_go_bak()
     elif val == '4':
         os.system('clear')
@@ -141,5 +138,23 @@ def get_char():
             return ch
 
 
+def input_name():
+    print('Podaj imię gracza: ')
+    player_name = ''
+    while True:
+        ch = get_nonblock_char(0.5)
+        if ch != '' and ch != '':
+            os.system('clear')
+            player_name += ch
+            print('Podaj imię gracza: {}'.format(player_name))
+        if ch == '':
+            os.system('clear')
+            player_name = player_name[:-1]
+            print('Podaj imię gracza: {}'.format(player_name))
+        if ch == '\n':
+            return player_name
+
+
 if __name__ == "__main__":
+    set_default_difficulty()
     menu()
