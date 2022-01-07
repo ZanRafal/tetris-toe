@@ -1,21 +1,21 @@
 # Rafał Zan
 # 311 214
-import os
 import time
 from termcolor import colored
-import MenuLogic
-import TimerLogic as tl
 import Board
-import Shapes
-from modules.getChar import *
+import Dictionaries
 import MenuLogic as gameMenu
+import Shapes
+import TimerLogic as tl
+import LeaderboardsLogic as leaderboards
+from modules.getChar import *
 
 
 def main():
     gameMenu.menu()
 
 
-def play():
+def play(player_name):
     my_board = Board.init_board(gameMenu.get_difficulty_level())
     start = time.time()
     moves_count = 0
@@ -44,15 +44,18 @@ def display_on_game(timer, new_figure, row, col, my_board, moves_count):
 
 
 def change_position(var, row, col):
-    if var == 'w':
-        return row % 8, (col - 1) % 8
-    elif var == 'a':
-        return (row - 1) % 8, col % 8
-    elif var == 's':
-        return row % 8, (col + 1) % 8
-    elif var == 'd':
-        return (row + 1) % 8, col % 8
+    tmp = 8 + (gameMenu.get_difficulty_level() - 1) * 4
 
+    if var == 'w':
+        return row % tmp, (col - 1) % tmp
+    elif var == 'a':
+        return (row - 1) % tmp, col % tmp
+    elif var == 's':
+        return row % tmp, (col + 1) % tmp
+    elif var == 'd':
+        return (row + 1) % tmp, col % tmp
+    elif var == 'e':
+        gameMenu.menu()
     return row, col
 
 
@@ -61,7 +64,7 @@ def display_current_moves_count(moves_count):
 
 
 def display_win_message():
-    print("Gratulacje!! Udało Ci się ukończyć grę!")
+    print(Dictionaries.WIN_MESSAGE)
 
 
 def display_time(value):
@@ -73,11 +76,12 @@ def display_time(value):
         print('{} : {}'.format(minutes, seconds))
 
 
-def init_last_step(moves_count, timer):
+def init_last_step(moves_count, total_time, player_name):
     display_win_message()
-    tl.display_final_time_and_moves(moves_count, timer)
-    final_score = tl.calculate_score(timer, moves_count)
+    tl.display_final_time_and_moves(moves_count, total_time)
+    final_score = tl.calculate_score(total_time, moves_count)
     tl.display_final_score(moves_count, final_score)
+    leaderboards.place_in_leaderboards(player_name, total_time, moves_count, final_score)
     display_credits()
 
 
