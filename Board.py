@@ -1,7 +1,7 @@
 import random as rand
 from termcolor import colored
 import Shapes
-
+import os
 
 def update_display(row, col, new_figure, my_board):
     Shapes.choose_from_set(row, col, new_figure, my_board)
@@ -29,7 +29,7 @@ def update_display(row, col, new_figure, my_board):
 
 
 def display_board(table):
-    # os.system('clear')
+    os.system('clear')
     buffer = '┏━━━'
     for i in range(len(table)):
         buffer += '┳━━━'
