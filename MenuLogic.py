@@ -161,5 +161,6 @@ def get_application_properties():
     return properties
 
 
-if __name__ == "__main__":
-    menu()
+def set_application_properties(value):
+    with open(Dictionaries.app_properties, "w") as file:
+        file.write(value)
