@@ -155,6 +155,11 @@ def input_name():
             return player_name
 
 
+def get_application_properties():
+    with open(Dictionaries.app_properties, "r") as file:
+        properties = file.read()
+    return properties
+
+
 if __name__ == "__main__":
-    set_default_difficulty()
     menu()
