@@ -1,6 +1,5 @@
 import random as rand
 from termcolor import colored
-import os
 import Shapes
 
 
@@ -30,7 +29,7 @@ def update_display(row, col, new_figure, my_board):
 
 
 def display_board(table):
-    os.system('clear')
+    # os.system('clear')
     buffer = '┏━━━'
     for i in range(len(table)):
         buffer += '┳━━━'
@@ -38,7 +37,7 @@ def display_board(table):
 
     buffer += '┃' + colored(' ╳ ', 'blue') + '┃'
     for i in range(len(table)):
-        buffer += ' ' + colored(str(i + 1), 'blue', attrs=['bold']) + ' ┃'
+        buffer += ' ' + colored(hex(i + 1)[-1], 'magenta', attrs=['bold']) + ' ┃'
 
     buffer += '\n┣━━━┫'
     for i in range(len(table)):
@@ -46,12 +45,12 @@ def display_board(table):
     buffer += '\n'
 
     for j in range(len(table)):
-        buffer += '┃' +  colored(' {} '.format(j + 1), 'blue', attrs=['bold']) + '┃'
+        buffer += '┃' +  colored(' {} '.format(hex(j + 1)[-1]), 'magenta', attrs=['bold']) + '┃'
         for i in range(len(table)):
             if table[i][j] == "Θ":
                 buffer += " " + colored(table[i][j], "red") + " ┃"
             elif table[i][j] == "O":
-                buffer += " " + colored(table[i][j], "green") + " ┃"
+                buffer += " " + colored(table[i][j], "blue") + " ┃"
             else:
                 buffer += " " + table[i][j] + " ┃"
         if j < len(table) - 1:
@@ -69,7 +68,7 @@ def display_board(table):
 
 def init_board(difficulty_level):
     size = 8 + (difficulty_level - 1) * 4
-    quantity = 2 ^ difficulty_level
+    quantity = 2 ** difficulty_level
     board = []
     new_line = []
 
