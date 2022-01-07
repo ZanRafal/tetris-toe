@@ -1,6 +1,33 @@
 #Leaderboards
 import os
 
+import Dictionaries
+import MenuLogic
+
+
+def place_in_leaderboards(player_name, game_time, number_of_moves, player_score):
+    if MenuLogic.get_difficulty_level() == 1:
+        if is_on_podium(player_score, Dictionaries.easy_db):
+            validate_score(player_name,
+                           game_time,
+                           number_of_moves,
+                           player_score,
+                           Dictionaries.easy_db)
+    if MenuLogic.get_difficulty_level() == 2:
+        if is_on_podium(player_score, Dictionaries.medium_db):
+            validate_score(player_name,
+                           game_time,
+                           number_of_moves,
+                           player_score,
+                           Dictionaries.medium_db)
+    if MenuLogic.get_difficulty_level() == 3:
+        if is_on_podium(player_score, Dictionaries.hard_db):
+            validate_score(player_name,
+                           game_time,
+                           number_of_moves,
+                           player_score,
+                           Dictionaries.hard_db)
+
 
 def is_on_podium(player_score, file_name):
     separated_list = []
